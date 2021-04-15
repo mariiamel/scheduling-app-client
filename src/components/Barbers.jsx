@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Barbers = (props) => {
 
     const handleBookApp = () => {
-        <Link to={`users/${props.user.id}/appointments`} />
+        <Link to={`/users/${props.user.id}/appointments`} />
     }
 
     return(

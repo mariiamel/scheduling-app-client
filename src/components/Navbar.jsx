@@ -18,10 +18,10 @@ function Navbar (props) {
     const loggedOut = (
         <>
             <li>
-                <Link to="/login">Login</Link>
+                <Link to="/users/login">Login</Link>
             </li>
             <li>
-                <Link to="/register">Register</Link>
+                <Link to="/users/register">Register</Link>
             </li>
         </>
     )
@@ -37,6 +37,9 @@ function Navbar (props) {
                 </li>
                 <li>
                     <Link to="/services">Services</Link>
+                </li>
+                <li>
+                    <Link to="/contact">Contact</Link>
                 </li>
                 { props.user ? loggedIn : loggedOut}
             </ul>
