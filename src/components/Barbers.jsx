@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
+import { useState } from "react"
 
 const Barbers = (props) => {
 
+    const [redir, setRedir] = useState(false)
+
     const handleBookApp = () => {
-        <Link to={`/users/${props.user.id}/appointments`} />
+        setRedir(true)
+    }
+
+    if(redir == true){
+        return <Redirect to={`/users/${props.user.id}/appointments`} />
     }
 
     return(

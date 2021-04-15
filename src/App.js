@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Register from './components/Register'
 import Login from './components/Login'
 import Services from './components/Services'
+import Profile from './components/Profile'
 import Barbers from './components/Barbers'
 import Contact from './components/Contact'
 import Appointments from "./components/Appointments";
@@ -26,22 +27,10 @@ function App() {
         } catch(err) {
             console.log(err)
             console.log('The token is expired!!!')
-            // localStorage.removeItem('jwt')
+            localStorage.removeItem('jwt')
             setUser(null)
         }
     }, [])
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('jwtToken')
-  //   if(token) {
-  //     const decoded = jwt_decode(token)
-  //     setUser(decoded)
-  //     // console.log(user, '🌈');
-  //   } else {
-  //     localStorage.removeItem('jwt')
-  //     setUser(null)
-  //   }
-  // }, [])
 
     console.log(user, '🎁')
 
@@ -95,6 +84,13 @@ function App() {
               <Route 
                 path={`/users/${user.id}/appointments`}
                 render={ (props) => <Appointments {...props} user={ user } setUser={ setUser } /> }
+              />
+              }
+
+              {user &&
+              <Route
+              path={`/users/${user.id}/profile`}
+              render={ (props) => <Profile {...props} user={ user } setUser={ setUser } /> }
               />
               }
 

@@ -28,7 +28,7 @@ export default function Register(props) {
           const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/register`, requestBody)
 
           const { token } = response.data
-          localStorage.setItem('jwtToken', token)
+          localStorage.setItem('jwt', token)
           const decoded = jwt_decode(token)
           props.setUser(decoded)
 

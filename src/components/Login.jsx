@@ -22,7 +22,7 @@ export default function Login (props) {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/login`, requestBody)
             const { token } = response.data
             //save the response jwt in local storage
-            localStorage.setItem('jwtToken', token)
+            localStorage.setItem('jwt', token)
             //decode jwt and set app state
             const decoded = jwt_decode(token)
             props.setUser(decoded)

@@ -4,9 +4,11 @@ function Navbar (props) {
      
     const loggedIn = (
         <>
+        {props.user &&
             <li>
-                <Link to="/profile">Profile</Link>
+                <Link to={`/users/${props.user.id}/profile`}>Profile</Link>
             </li>
+         }
             <li>
                 <Link to="/">
                     <span onClick={props.handleLogout}>Logout</span>
