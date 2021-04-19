@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import axios from 'axios'
 
 const FavBarbers = props => {
-    const [allDarbers, setAllBarbers] = useState([])
+    const [allBarbers, setAllBarbers] = useState([])
  
     const pullData = async () => {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/users/${props.user.id}/favorites`)
@@ -15,16 +15,16 @@ const FavBarbers = props => {
         setAllBarbers(barbersArray)
     }
 
-
     useEffect(() => {
         pullData()
     },[])
+
 
     return(
         <div>
             <h1>Your favorite barbers:</h1>
 
-            <p>{allDarbers}</p>
+            <p>{allBarbers}</p>
             
         </div>
     )

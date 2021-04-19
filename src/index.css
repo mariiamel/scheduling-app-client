@@ -7,7 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(210, 237, 247);
-  /* background-image: url("../imgs/Background.jpg"); */
+  background-image: url("../src/imgs/Background.jpg");
+  background-size: cover;
+  background-repeat: repeat;
 }
 
 code {
@@ -32,11 +34,13 @@ nav ul li {
 nav a {
   text-decoration: none;
   margin-right: 15px;
-  color: rebeccapurple;
+  color: darkblue;
+  font-size: medium;
+  font-family: 'Anton', sans-serif;
 }
 
 nav a:hover {
-  color: burlywood;
+  color: rgb(46, 110, 139);
 }
 .login{
   width: 50%;
@@ -53,6 +57,7 @@ nav a:hover {
   display: flex;
   justify-content: baseline;
   margin: 10px;
+  background-color: lightgrey;
 }
 
 .appointment-box p {
@@ -75,8 +80,21 @@ nav a:hover {
   text-align: center;
 }
 
-.barbers{
+.barber{
   display: flex;
-  justify-content: space-between;
-  padding: 5%;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.line{
+  width: 70px;
+}
+.contact h3{
+  font-family: 'Anton', sans-serif;
+}
+.barber1-img{
+  height: 200px;
+  width: 200px;
+}
+.addFont{
+  font-family: 'Anton', sans-serif;
 }

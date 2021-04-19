@@ -2,6 +2,7 @@ import '../App.css';
 import axios from 'axios'
 import { DatePickerComponent, TimePickerComponent } from "@syncfusion/ej2-react-calendars"
 import { useState } from 'react'
+import { Redirect } from "react-router-dom"
 import { Button } from 'react-bootstrap'
 
 
@@ -50,9 +51,9 @@ const CreateAppointment = (props) => {
     }
   }
 
-  // if(redirect === true){
-  //   return <Redirect to={`/users/${props.user.id}/profile`} />
-  // }
+  if(redirect === true){
+    return <Redirect to={`/users/${props.user.id}/profile`} />
+  }
 
     return (
       <div>

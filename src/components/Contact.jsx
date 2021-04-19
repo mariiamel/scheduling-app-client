@@ -1,11 +1,13 @@
 const Contact = () => {
     return(
-        <div>
-            <h1>Contact us</h1>
+        <div className='contact'>
 
-            <h3> 1234 S D Street, Seattle, WA, 99123</h3>
-            <p>Phone: 253-123-22-33</p>
-            <h3>Open Monday through Sunday</h3>
+            <h3>Address:</h3>
+            <p>1234 S D Street, Seattle, WA, 99123</p>
+            <hr className='line'></hr>
+            <h3>Phone:</h3>
+            <p>253-123-22-33</p>
+            <hr className='line'></hr>
             <h3>Hours</h3>
 
             <p>Mon 9:00 am - 7:00 pm </p>
