@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Redirect } from 'react-router-dom'
@@ -39,37 +40,33 @@ export default function Login (props) {
     if(props.user) return <Redirect to={`/users/${props.user.id}/profile`} component={ Profile } user={ props.user } />
     
     return(
-        <div className="background-appointments">
-            <div className="register-form">
-                <h2>Login to Your Account</h2>
-                <p>{ message }</p>
-                <form onSubmit={ handleSubmit } className="register-info">
-                    <div className="register-input">
-                    <label htmlFor="email-input">Email: </label>
-                    <input
-                        id="email-input"
-                        type="email"
-                        placeholder="user@url.com"
-                        onChange={ e => setEmail(e.target.value)}
-                        value={email}
+        <div>
+            
+            <h2>Create an Account</h2>
+                <p>{message}</p>
+
+                <Form onSubmit={ handleSubmit }>
+
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" 
+                        onChange={e => setEmail(e.target.value)}
+                        value={email} 
                     />
-                    </div>
-                    <div className="register-input">
-                    <label htmlFor="password-input">Password: </label>
-                    <input
-                        id="password-input"
-                        type="password"
-                        placeholder="password..."
-                        onChange={ e => setPassword(e.target.value)}
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" 
+                        onChange={e => setPassword(e.target.value)}
                         value={password}
                     />
-                    </div>
-                    <div>
-                        <input type="submit" value="Login" />
-                    </div>
+                </Form.Group>
 
-                </form>
-            </div>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+                </Form>
         </div>
     )
 }

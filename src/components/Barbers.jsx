@@ -1,5 +1,7 @@
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import { useState } from "react"
+import { Button, Card } from 'react-bootstrap'
+// import BarberImg from '../../imgs/maxresdefault.jpg'
 
 const Barbers = (props) => {
 
@@ -9,25 +11,37 @@ const Barbers = (props) => {
         setRedir(true)
     }
 
-    if(redir == true){
+    if(redir === true){
         return <Redirect to={`/users/${props.user.id}/appointments`} />
     }
 
     return(
         <div>
-            <h1>This is the Barbers page</h1>
-                <div className='barbers-box'>
-
-                    <img src=""/>
-
-                    <h3>Nick parker</h3>
-                    <p>barber</p>
+            <h1>Our Barbers:</h1>
 
                     {/* <button onClick={handleAddToFav}>Add to fav</button> */}
 
-                    <button onClick={handleBookApp}>Schedule appointment</button>
+                <Card style={{ width: '18rem' }} className="barbers">
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>Nick Parker</Card.Title>
+                    <Card.Text>
+                        Certified barber
+                    </Card.Text>
+                    <Button variant="primary" onClick={handleBookApp} >Schedule appointment</Button>
+                </Card.Body>
+                </Card>
 
-                </div>
+                <Card style={{ width: '18rem' }} className="barbers">
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>Katy Spade</Card.Title>
+                    <Card.Text>
+                        Certified barber
+                    </Card.Text>
+                    <Button variant="primary" onClick={handleBookApp} >Schedule appointment</Button>
+                </Card.Body>
+                </Card>
         </div>
     )
 }

@@ -9,6 +9,12 @@ function Navbar (props) {
                 <Link to={`/users/${props.user.id}/profile`}>Profile</Link>
             </li>
          }
+
+        {props.user &&
+            <li>
+                <Link to={`/users/${props.user.id}/favorite`}>Favorite</Link>
+            </li>
+         }
             <li>
                 <Link to="/">
                     <span onClick={props.handleLogout}>Logout</span>

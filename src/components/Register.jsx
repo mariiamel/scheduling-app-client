@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import { Redirect } from 'react-router-dom'
@@ -9,11 +10,15 @@ export default function Register(props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
-    const [firstName] = useState('')
-    const [lastName] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [phone, setPhone] = useState('')
     const [img] = useState('')
     const [appointments] = useState([])
+    const [availability] = useState([])
+
+    const [isBarber, setIsBarber] = useState(false)
+    const [isClient, setIsClient] = useState(false)
 
     const handleSubmit = async (e) => {
         try {
@@ -22,7 +27,12 @@ export default function Register(props) {
           const requestBody = {
             username: username,
             email: email,
-            password: password
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone,
+            isBarber: isBarber,
+            isClient: isClient
           }
 
           const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/register`, requestBody)
@@ -45,67 +55,69 @@ export default function Register(props) {
 if(props.user) return <Redirect to={`/users/${props.user.id}/profile`} component={ Profile } user={ props.user } />
 
     return(
-        <div className="background-appointments">
-            <div className="register-form">
-
+        <div>
                 <h2>Create an Account</h2>
                 <p>{message}</p>
 
-                <form onSubmit={ handleSubmit } className="register-info">
-                    <div className="register-input">
-                    <label htmlFor='username-input'>Username: </label>
-                    <input
-                        id='username-input'
-                        type='text'
-                        placeholder='your Username'
+                <Form onSubmit={ handleSubmit }>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="text" placeholder="Enter username" 
                         onChange={e => setUsername(e.target.value)}
-                        value={username}
+                        value={username} 
                     />
-                    </div>
+                </Form.Group>
 
-                    <div className="register-input">
-                    <label htmlFor='email-input'>Email: </label>
-                    <input
-                        id='email-input'
-                        type='email'
-                        placeholder='your Email'
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" 
                         onChange={e => setEmail(e.target.value)}
-                        value={email}
+                        value={email} 
                     />
-                    </div>
+                </Form.Group>
 
-                    <div className="register-input">
-                    <label htmlFor='password-input'>Password: </label>
-                    <input
-                        id='password-input'
-                        type='password'
-                        placeholder='your Password'
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" 
                         onChange={e => setPassword(e.target.value)}
                         value={password}
                     />
-                    </div>
+                </Form.Group>
 
-                    <div className="register-input">
-                    <label htmlFor='phone-input'>Phone: </label>
-                    <input
-                        id='phone-input'
-                        type='phone'
-                        placeholder='your Phone'
-                        onChange={e => setPhone(e.target.value)}
-                        value={phone}
-                    />
-                    </div>
+                <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label="I'm a Barber" value={isBarber} onChange={e => setIsBarber(true)}/>
+                </Form.Group>
 
-                    <input
+                <input
                         id='firstName-input'
                         type='hidden'
+                        placeholder='your firstName'
+                        // onChange={e => setFirstName(e.target.value)}
                         value={firstName}
                     />
+                    {/* </div> */}
+                    {/* <div className="register-input">
+                    <label htmlFor='lastNAme-input'>Last Name: </label> */}
                     <input
-                        id='lastName-input'
+                        id='lastNAme-input'
                         type='hidden'
+                        placeholder='your Last Name'
+                        // onChange={e => setLastName(e.target.value)}
                         value={lastName}
                     />
+                    {/* </div> */}
+
+                    {/* <div className="register-input">
+                    <label htmlFor='phone-input'>Phone: </label> */}
+                    <input
+                        id='phone-input'
+                        type='hidden'
+                        placeholder='your Phone'
+                        // onChange={e => setPhone(e.target.value)}
+                        value={phone}
+                    />
+                    {/* </div> */}
+
                     <input
                         id='img-input'
                         type='hidden'
@@ -116,15 +128,17 @@ if(props.user) return <Redirect to={`/users/${props.user.id}/profile`} component
                         type='hidden'
                         value={appointments}
                     />
-                    <div>
-                    <input 
-                        type='submit'
-                        value='Register'
-                        className="register-button"
+                    <input
+                        id='availability-input'
+                        type='hidden'
+                        value={availability}
                     />
-                    </div>
-                </form>
-            </div>
+
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+                </Form>
         </div>
     )
 }
+

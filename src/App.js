@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import jwt from 'jsonwebtoken'
 import jwt_decode from 'jwt-decode'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -12,6 +11,7 @@ import Barbers from './components/Barbers'
 import Contact from './components/Contact'
 import Appointments from "./components/Appointments";
 import CreateAppointment from "./components/CreateAppointment";
+import FavBarbers from './components/FavBarbers'
 
 function App() {
 
@@ -91,6 +91,13 @@ function App() {
               <Route
               path={`/users/${user.id}/profile`}
               render={ (props) => <Profile {...props} user={ user } setUser={ setUser } /> }
+              />
+              }
+
+              {user &&
+              <Route
+              path={`/users/${user.id}/favorite`}
+              render={ (props) => <FavBarbers {...props} user={ user } setUser={ setUser } /> }
               />
               }
 
