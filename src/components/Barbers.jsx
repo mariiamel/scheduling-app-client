@@ -5,7 +5,6 @@ import BarberImg from '../imgs/1f24b562dc7ef1069a2b0134775ff65f.jpg'
 import BarberImg2 from '../imgs/57ee9527d887242d008b48a9.webp'
 
 const Barbers = (props) => {
-
     const [redir, setRedir] = useState(false)
 
     const handleBookApp = () => {
@@ -15,7 +14,6 @@ const Barbers = (props) => {
     if(redir === true){
         return <Redirect to={`/users/${props.user.id}/appointments`} />
     }
-
 
     return(
         <div>

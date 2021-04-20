@@ -17,7 +17,6 @@ const Appointments = (props) => {
         setAllAppoint(appointArray)
     }
 
-
     useEffect(() => {
         pullData()
     },[])

@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 const AppointCard = (props) => {
     const [refresh, setRefresh] = useState(false)
-    // console.log(props.appId, '⚠️')
 
     const handleCancel = async (e) => {
         try {
@@ -17,7 +16,7 @@ const AppointCard = (props) => {
     }
 
     if(refresh === true){
-        window.location.reload(); 
+        window.location.reload()
     }
 
     return(
